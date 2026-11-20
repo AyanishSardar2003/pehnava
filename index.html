@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PEHNAVA Fragrance Wardrobe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion: a calm, elegant fragrance house, few hues, fine detail and air
+   IDEA a clothes wardrobe: scents hang on a rail like garments, sorted by occasion
+   PICTURE four bottles on hangers along a brass rail, one per collection, full width under the title
+   COLOUR deep plum ground, brass amber accent, four collection colours (sage, slate blue, rose, lavender), white below
+   TYPE Marcellus display + Manrope text
+   LAYOUT title across the top of a plum band, rail beneath at full width; sections as full-width bands; phone stacks */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#1a1019);--ink:light-dark(#2a1528,#f3e9f1);--soft:light-dark(#6b5a68,#c9b8c6);--line:light-dark(#e6dbe3,#3d2a3a);--panel:light-dark(#f7f2f6,#241722);--plum:#3d1f3a;--plum2:#5a2f55;--brass:#c8892b;--day:#6e9a5b;--desk:#4f7396;--social:#a8435a;--reset:#8a78ae}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Marcellus,Georgia,serif;font-weight:400;line-height:1.05;letter-spacing:-.01em;text-wrap:balance;margin:0}
+h2{font-size:clamp(30px,4vw,44px);margin-bottom:12px}
+h3{font-size:22px}
+p{margin:0 0 12px;max-width:68ch}
+a{color:inherit}
+.band{padding-block:clamp(36px,5vw,72px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.lead{font-size:17px;color:var(--soft)}
+nav{position:sticky;top:0;z-index:5;background:var(--plum);color:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;padding:12px max(5vw,16px)}
+nav b{font-family:Marcellus,serif;font-weight:400;font-size:22px;letter-spacing:.06em;margin-right:auto}
+nav a{text-decoration:none;font-size:15px;opacity:.9;padding:6px 0}
+nav a:hover,nav a:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.hero{background:var(--plum);color:#fff;padding-bottom:0}
+.hero h1{font-size:clamp(46px,8vw,96px);letter-spacing:.04em}
+.hero .sub{font-size:clamp(18px,2.2vw,24px);font-family:Marcellus,serif;margin:10px 0 6px;color:#f1dcc0}
+.hero p{color:#e9d9e6}
+.top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px 48px;align-items:end}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;font:700 15px Manrope,sans-serif;text-decoration:none;border:1.5px solid var(--brass);cursor:pointer}
+.btn.fill{background:var(--brass);color:#2a1528}
+.btn.line{background:transparent;color:#fff}
+.btn:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #f1c27a;outline-offset:2px}
+.rail{margin:28px auto 0;aspect-ratio:1200/340;max-height:340px;width:100%}
+.rail svg{width:100%;height:100%;display:block}
+.chips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:14px 0 26px}
+.chips span{font-size:14px;color:#e9d9e6;text-align:center}
+.chips i{display:block;font-style:normal;font-family:Marcellus,serif;font-size:19px;color:#fff}
+.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:22px}
+.col{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg)}
+.col header{padding:16px 18px;color:#fff}
+.col header small{display:block;font-size:14px;opacity:.9}
+.col ul{list-style:none;margin:0;padding:8px 18px 14px}
+.col li{padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.col li:last-child{border-bottom:0}
+.note{font-size:14px;color:var(--soft);margin-top:14px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.quiz{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+fieldset{border:0;margin:0 0 16px;padding:0}
+legend{font-weight:700;margin-bottom:8px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{position:relative}
+.opts input{position:absolute;opacity:0;inset:0}
+.opts span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;font-size:15px}
+.opts input:checked+span{border-color:var(--plum2);background:var(--plum2);color:#fff}
+.opts input:focus-visible+span{outline:3px solid var(--brass);outline-offset:2px}
+.result{border-radius:16px;padding:24px;color:#fff;min-height:100%}
+.result h3{font-size:28px;margin:6px 0 10px}
+.result ul{margin:8px 0 14px;padding-left:18px}
+.result .pill{display:inline-block;background:rgba(255,255,255,.18);border-radius:999px;padding:4px 12px;font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-top:22px;counter-reset:s}
+.step{border-top:3px solid var(--brass);padding-top:12px}
+.step b{display:block;font-family:Marcellus,serif;font-weight:400;font-size:21px}
+.step p{font-size:15px;color:var(--soft)}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;color:var(--soft);font-size:14px}
+td.r,th.r{text-align:right;white-space:nowrap}
+.pass{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,330px);gap:clamp(24px,4vw,56px);align-items:center}
+.phone{background:#1b1119;border-radius:34px;padding:12px;box-shadow:0 18px 40px rgba(40,10,35,.25);max-width:330px;margin:0 auto;width:100%}
+.screen{background:#fbf7fa;color:#2a1528;border-radius:24px;padding:18px 16px 20px}
+.screen .who{display:flex;justify-content:space-between;font-size:14px;color:#6b5a68;margin-bottom:12px}
+.slot{display:flex;align-items:center;gap:10px;border-radius:12px;padding:10px 12px;margin-bottom:8px;background:#fff;border:1px solid #eadfe8;font-size:15px}
+.slot i{width:12px;height:12px;border-radius:50%;flex:none}
+.slot em{font-style:normal;color:#6b5a68;font-size:13px;margin-left:auto}
+.alert{border-radius:12px;padding:10px 12px;margin-top:10px;font-size:14px;background:#fbf0de;color:#5b3d0c}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(14em,1fr));gap:16px;margin-top:18px}
+.feats.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.feat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.feat h3{font-size:20px;margin-bottom:6px}
+.feat p{font-size:15px;color:var(--soft);margin:0}
+.studio{background:var(--plum);color:#fff}
+.studio .lead,.studio p{color:#e9d9e6}
+.studio .feat{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16)}
+.studio .feat p{color:#e9d9e6}
+form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:10px;margin-top:16px;align-items:end}
+form label{font-size:14px;font-weight:700;display:grid;gap:6px}
+input[type=text],input[type=email],select{font:16px Manrope,sans-serif;min-height:46px;padding:0 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+#thanks{margin-top:12px;font-weight:700;color:var(--brass);min-height:1.6em}
+footer{background:#24121f;color:#d9c6d4;font-size:14px}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:24px}
+footer b{font-family:Marcellus,serif;font-weight:400;font-size:24px;color:#fff;letter-spacing:.06em}
+footer p{margin:6px 0}
+@media(max-width:980px){.cols{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.top,.split,.pass{grid-template-columns:minmax(0,1fr)}form{grid-template-columns:minmax(0,1fr)}footer .wrap{grid-template-columns:minmax(0,1fr)}nav a.x{display:none}}
+@media(max-width:600px){.feats.two{grid-template-columns:minmax(0,1fr)}nav{gap:6px 16px}nav a.x2{display:none}.cols{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.chips span{font-size:13px}.chips i{font-size:16px}table{font-size:14px}th,td{padding:9px 6px}}
+@media(prefers-reduced-motion:no-preference){.bottle{animation:sway 6s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 0}.bottle:nth-of-type(2){animation-delay:-1.5s}.bottle:nth-of-type(3){animation-delay:-3s}.bottle:nth-of-type(4){animation-delay:-4.5s}}
+@keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+</style>
+</head>
+<body>
+<nav aria-label="Main">
+  <b>PEHNAVA</b>
+  <a href="#collections" class="x2">Collections</a>
+  <a href="#scent-map">Scent Map</a>
+  <a href="#how" class="x">How it works</a>
+  <a href="#passport" class="x">Scent Passport</a>
+  <a href="#studio">Studio</a>
+</nav>
+
+<header class="band hero">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>PEHNAVA</h1>
+        <div class="sub">One identity. Four expressions.</div>
+        <p>A fragrance wardrobe for every part of your day. Sixteen scents in four occasion collections, all made to layer with each other. Try before you commit, and refill for less.</p>
+      </div>
+      <div>
+        <p>Start with a <strong>₹590 Discovery Flight</strong> of six samples. The full ₹590 comes back as credit on your first bottle.</p>
+        <div class="btns"><a class="btn fill" href="#scent-map">Find your wardrobe</a><a class="btn line" href="#collections">See the collections</a></div>
+      </div>
+    </div>
+    <div class="rail" aria-hidden="true"><svg id="railsvg" viewBox="0 0 1200 340" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <div class="chips"><span><i>Day</i>fresh, for the commute</span><span><i>Desk</i>subtle, for the office</span><span><i>Social</i>bold, for evenings</span><span><i>Reset</i>soft, for home</span></div>
+  </div>
+</header>
+
+<section class="band" id="collections">
+  <div class="wrap">
+    <h2>Four collections, sixteen scents</h2>
+    <p class="lead">We sort scents by where you will wear them, not by fragrance family. Every scent shares a musk-cedar base, so any two layer together.</p>
+    <div class="cols" id="cols"></div>
+    <p class="note">Deepen any scent with one of four Layering Accords: Musk, Amber, Citrus or Oud. A limited Seasonal Drop arrives every quarter.</p>
+  </div>
+</section>
+
+<section class="band" id="scent-map" style="background:var(--panel)">
+  <div class="wrap">
+    <h2>The Scent Map</h2>
+    <p class="lead">Three questions about your day. Your Scent Stylist does the full version in the Studio.</p>
+    <div class="split" style="margin-top:18px">
+      <div class="quiz">
+        <fieldset><legend>Where do you spend most of your day?</legend><div class="opts" data-q="where"></div></fieldset>
+        <fieldset><legend>How noticeable do you like a scent?</legend><div class="opts" data-q="strength"></div></fieldset>
+        <fieldset style="margin:0"><legend>One signature or a few?</legend><div class="opts" data-q="count"></div></fieldset>
+      </div>
+      <div class="result" id="result" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="lead">A guided visit, not a wall of bottles.</p>
+    <div class="steps" id="steps"></div>
+  </div>
+</section>
+
+<section class="band" style="background:var(--panel)">
+  <div class="wrap">
+    <h2>What you can buy</h2>
+    <p class="lead">Accessible premium: a full eau de parfum costs less than half of a luxury house's, made for Indian heat.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Product</th><th>What it is</th><th class="r">Price</th></tr></thead>
+      <tbody id="prices"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="band" id="passport">
+  <div class="wrap pass">
+    <div>
+      <h2>Your Scent Passport</h2>
+      <p class="lead">Your fragrance wardrobe, remembered. It lives on WhatsApp and in the app, and works the same in the Studio and online.</p>
+      <div class="feats two">
+        <div class="feat"><h3>Your wardrobe</h3><p>The scents you own, sorted by occasion, and the gaps still to fill.</p></div>
+        <div class="feat"><h3>Your credit</h3><p>Your Flight credit and how many days are left to use it.</p></div>
+        <div class="feat"><h3>Your refills</h3><p>A reminder before you run out, so a refill arrives on time.</p></div>
+        <div class="feat"><h3>Your data, your choice</h3><p>Opt-in only. We keep what your wardrobe needs and nothing more.</p></div>
+      </div>
+    </div>
+    <div class="phone" aria-label="Example Scent Passport screen">
+      <div class="screen">
+        <div class="who"><strong style="color:#2a1528">Riya's Passport</strong><span>since Apr 2027</span></div>
+        <div class="slot"><i style="background:var(--day)"></i>Day: Grapefruit &amp; Mint</div>
+        <div class="slot"><i style="background:var(--desk)"></i>Desk: Iris &amp; Musk</div>
+        <div class="slot"><i style="background:var(--social)"></i>Social<em>add to wardrobe</em></div>
+        <div class="slot"><i style="background:var(--reset)"></i>Reset: Lavender &amp; Oat</div>
+        <div class="alert"><strong>Refill due:</strong> Iris &amp; Musk in 12 days</div>
+        <div class="alert" style="background:#efe7f4;color:#3d1f3a"><strong>Flight credit:</strong> ₹590, 9 days left</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band studio" id="studio">
+  <div class="wrap">
+    <h2>The Studio, Bengaluru</h2>
+    <p class="lead">Our first Studio opens in 2027 at Phoenix Marketcity, Whitefield. Six hundred square feet, designed so your nose never gets tired.</p>
+    <div class="feats">
+      <div class="feat"><h3>Four occasion walls</h3><p>A loop takes you past Day, Desk, Social and Reset in turn.</p></div>
+      <div class="feat"><h3>The Layer Lab</h3><p>A bar for testing pairs on blotters, with an Accord or without.</p></div>
+      <div class="feat"><h3>Neutral-air Scent Map table</h3><p>Where your stylist builds your wardrobe, away from the walls.</p></div>
+      <div class="feat"><h3>Refill and gifting</h3><p>Sealed refill cartridges and gift wrapping at the counter.</p></div>
+    </div>
+    <p style="margin-top:22px">Smaller Edits and Counters follow in Hyderabad, Pune, Mumbai, Delhi NCR and Chennai.</p>
+    <h3 style="margin-top:26px">Be first through the door</h3>
+    <form id="interest" novalidate>
+      <label for="nm">Name<input type="text" id="nm" autocomplete="name" placeholder="Riya Sharma"></label>
+      <label for="em">Email<input type="email" id="em" autocomplete="email" placeholder="riya@example.com"></label>
+      <button class="btn fill" type="submit">Register interest</button>
+    </form>
+    <div id="thanks" role="status"></div>
+  </div>
+</section>
+
+<footer class="band">
+  <div class="wrap">
+    <div><b>PEHNAVA</b><p>Hindi for attire. Wear fragrance the way you wear clothes.</p><p>A concept brand created by Group 8 for the Managing Retailing course at IIM Calcutta. Products, prices, the Studio and the Passport example describe the project plan; nothing here is on sale yet.</p></div>
+    <div><p><strong style="color:#fff">Explore</strong></p><p><a href="#collections">Collections</a></p><p><a href="#scent-map">Scent Map</a></p><p><a href="#passport">Scent Passport</a></p></div>
+    <div><p><strong style="color:#fff">Visit</strong></p><p>Phoenix Marketcity, Whitefield, Bengaluru</p><p>Opening 2027</p></div>
+  </div>
+</footer>
+
+<script>
+{
+  const C = { Day: "#6e9a5b", Desk: "#4f7396", Social: "#a8435a", Reset: "#8a78ae" };
+  const cols = [
+    ["Day", "Fresh, for the commute", ["Bergamot & Neroli", "Green Tea & Basil", "Grapefruit & Mint", "Yuzu & Fig Leaf"]],
+    ["Desk", "Subtle, for the office", ["Iris & Musk", "Cedar & Cardamom", "Linen & Ambrette", "Sandalwood & Pear"]],
+    ["Social", "Bold, for evenings", ["Oud & Rose", "Tuberose & Amber", "Saffron & Leather", "Vanilla & Tonka"]],
+    ["Reset", "Soft, for home", ["Lavender & Oat", "Mogra & Musk", "Petrichor & Khus", "Cocoa & Coconut"]],
+  ];
+  const esc = (s) => s.replace(/&/g, "&amp;");
+  document.getElementById("cols").innerHTML = cols.map(([n, d, s]) =>
+    `<article class="col"><header style="background:${C[n]}"><h3>${n}</h3><small>${d}</small></header><ul>${s.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></article>`).join("");
+
+  // hero rail: four bottles on hangers
+  const svg = document.getElementById("railsvg");
+  const xs = [210, 470, 730, 990];
+  const bottle = (x, c) => `<g class="bottle">
+    <path d="M${x} 46 q0 -16 14 -16 q14 0 14 14 q0 10 -14 16 l-62 34 h124 l-62 -34" fill="none" stroke="#d8b06a" stroke-width="5" stroke-linejoin="round" transform="translate(-14 0)"/>
+    <line x1="${x}" y1="96" x2="${x}" y2="118" stroke="#d8b06a" stroke-width="4"/>
+    <rect x="${x - 22}" y="116" width="44" height="34" rx="6" fill="#d8b06a"/>
+    <rect x="${x - 22}" y="116" width="14" height="34" rx="5" fill="#f1d39a" opacity=".7"/>
+    <rect x="${x - 14}" y="148" width="28" height="16" fill="#b98a3e"/>
+    <rect x="${x - 70}" y="162" width="140" height="150" rx="22" fill="${c}"/>
+    <rect x="${x - 70}" y="162" width="140" height="150" rx="22" fill="url(#glass)"/>
+    <rect x="${x - 56}" y="176" width="16" height="118" rx="8" fill="#fff" opacity=".22"/>
+    <rect x="${x - 44}" y="214" width="88" height="54" rx="6" fill="#fff" opacity=".92"/>
+    <line x1="${x - 30}" y1="234" x2="${x + 30}" y2="234" stroke="${c}" stroke-width="3"/>
+    <line x1="${x - 20}" y1="248" x2="${x + 20}" y2="248" stroke="${c}" stroke-width="2" opacity=".6"/>
+    <ellipse cx="${x}" cy="326" rx="64" ry="7" fill="#000" opacity=".22"/>
+  </g>`;
+  svg.innerHTML = `<defs><linearGradient id="glass" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient>
+    <linearGradient id="rod" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d39a"/><stop offset="1" stop-color="#a87526"/></linearGradient></defs>
+    <rect x="30" y="22" width="1140" height="14" rx="7" fill="url(#rod)"/>
+    <circle cx="36" cy="29" r="14" fill="#a87526"/><circle cx="1164" cy="29" r="14" fill="#a87526"/>
+    ${xs.map((x, i) => bottle(x, Object.values(C)[i])).join("")}`;
+
+  // Scent Map quiz
+  const Q = {
+    where: [["commute", "On the move"], ["office", "At a desk"], ["evenings", "Out in the evenings"], ["home", "At home"]],
+    strength: [["subtle", "Close to the skin"], ["noticed", "Noticed in a room"]],
+    count: [["one", "One signature"], ["few", "A few, by occasion"]],
+  };
+  const state = { where: "office", strength: "subtle", count: "few" };
+  document.querySelectorAll(".opts").forEach((box) => {
+    const q = box.dataset.q;
+    box.innerHTML = Q[q].map(([v, t]) => `<label><input type="radio" name="${q}" id="${q}-${v}" value="${v}" ${state[q] === v ? "checked" : ""}><span>${t}</span></label>`).join("");
+    box.addEventListener("change", (e) => { state[q] = e.target.value; render(); });
+  });
+  const lookup = { commute: "Day", office: "Desk", evenings: "Social", home: "Reset" };
+  const pick = { Day: [2, 0], Desk: [0, 1], Social: [1, 0], Reset: [0, 1] };
+  function render() {
+    const main = lookup[state.where];
+    const second = state.strength === "subtle" ? (main === "Desk" ? "Reset" : "Desk") : (main === "Social" ? "Day" : "Social");
+    const scent = (n, k) => cols.find((c) => c[0] === n)[2][pick[n][k]];
+    const few = state.count === "few";
+    const buy = few ? "Wardrobe Capsule, ₹3,490" : "Discovery Flight, ₹590, then a 50 ml EDP";
+    document.getElementById("result").style.background = `linear-gradient(150deg, ${C[main]}, #3d1f3a)`;
+    document.getElementById("result").innerHTML = `<span class="pill">Your starting wardrobe</span>
+      <h3>${main}${few ? " + " + second : ""}</h3>
+      <ul><li><strong>${main}:</strong> ${esc(scent(main, 0))}, or ${esc(scent(main, 1))}</li>${few ? `<li><strong>${second}:</strong> ${esc(scent(second, 0))}</li><li><strong>To layer:</strong> the ${state.strength === "subtle" ? "Musk" : "Amber"} Accord</li>` : ""}</ul>
+      <p style="color:#fff">Start with: <strong>${buy}</strong>.</p>
+      <p style="color:#f1dcc0;font-size:14px;margin:0">Change an answer and your wardrobe updates. Your Stylist fine-tunes it in the Studio.</p>`;
+  }
+  render();
+
+  const steps = [["Discover", "A three-minute Scent Map about your day."], ["Explore", "Walls arranged by occasion, not by brand."], ["Experience", "Try pairs at the Layer Lab on blotters."],
+    ["Curate", "Your Scent Stylist builds your wardrobe."], ["Purchase", "A Flight, a single bottle or a full Capsule."], ["Replenish", "A WhatsApp nudge when a refill is due."]];
+  document.getElementById("steps").innerHTML = steps.map(([t, d]) => `<div class="step"><b>${t}</b><p>${d}</p></div>`).join("");
+
+  const prices = [["Discovery Flight", "Six 2 ml samples; the full price comes back as credit on a bottle", "₹590"], ["Travel spray", "10 ml of any scent, for the bag or the desk drawer", "₹790"],
+    ["Layering Accord", "8 g of Musk, Amber, Citrus or Oud to deepen any scent", "₹890"], ["Eau de parfum", "50 ml of any of the sixteen scents", "₹2,290"],
+    ["Refill cartridge", "A factory-sealed 50 ml refill, about a quarter cheaper", "₹1,690"], ["Wardrobe Capsule", "Four 10 ml sprays and one Accord", "₹3,490"],
+    ["Seasonal Drop", "A limited scent each quarter", "₹1,590"], ["Gift Duo", "Two scents chosen to layer, gift-wrapped", "₹4,290"]];
+  document.getElementById("prices").innerHTML = prices.map(([a, b, c]) => `<tr><td><strong>${a}</strong></td><td>${b}</td><td class="r">${c}</td></tr>`).join("");
+
+  document.getElementById("interest").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nm = document.getElementById("nm").value.trim();
+    document.getElementById("thanks").textContent = `Thank you${nm ? ", " + nm : ""}. This is a concept site for our course project, so nothing was sent or stored, but we love the enthusiasm.`;
+  });
+}
+</script>
+</body>
+</html>
